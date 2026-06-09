@@ -404,15 +404,15 @@ export default function Index() {
             <div className={`transition-all duration-1000 delay-200 ${sectionVisible("about") ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"}`}>
               <p className="text-xs tracking-widest uppercase mb-3" style={{ color: "rgba(212,175,55,0.5)", fontFamily: "'Cormorant SC', serif" }}>Обо мне</p>
               <h2 className="text-4xl md:text-5xl mb-6" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "rgba(245,230,200,0.95)" }}>
-                Путь длиной<br /><span className="gold-text">в 15 лет</span>
+                Ольга, <span className="gold-text">36 лет</span>
               </h2>
               <div className="space-y-4 leading-relaxed" style={{ color: "rgba(212,175,55,0.55)", fontFamily: "'Cormorant Garamond', serif", fontSize: "1.05rem" }}>
-                <p>За моими плечами — годы глубокого изучения эзотерических практик, работы с энергетическими полями и древними знаниями, передававшимися через поколения.</p>
-                <p>Я работаю с каждым человеком индивидуально, потому что каждая судьба уникальна. Моя задача — найти корень проблемы и помочь вам освободиться от того, что мешает жить полной жизнью.</p>
-                <p>Истинные перемены требуют готовности меняться. Я лишь открываю дверь — войти должны вы.</p>
+                <p>Я обладаю даром ясновидения — способностью видеть духов и различных сущностей. Этот дар открылся не случайно: я пережила три клинические смерти, и каждая из них изменила моё восприятие мира и углубила мои способности.</p>
+                <p>Этот опыт научил меня ценить каждую жизнь и понимать то, что скрыто от обычного взгляда. Сегодня я использую свой дар для помощи людям — тем, кто оказался в сложной ситуации и не знает выхода.</p>
+                <p>Я не просто практик — я человек, прошедший через границу между мирами. И именно это даёт мне силу помогать вам.</p>
               </div>
               <div className="mt-8 grid grid-cols-2 gap-4">
-                {[["Кармическая работа", "🌙"], ["Энергетика", "⚡"], ["Любовная магия", "💜"], ["Защита", "🛡️"]].map(([label, icon]) => (
+                {[["Ясновидение", "👁️"], ["Работа с духами", "🌙"], ["Энергетика", "⚡"], ["Помощь людям", "💜"]].map(([label, icon]) => (
                   <div key={label} className="flex items-center gap-2 text-sm" style={{ color: "rgba(212,175,55,0.6)" }}>
                     <span>{icon}</span>
                     <span style={{ fontFamily: "'Cormorant SC', serif" }}>{label}</span>
