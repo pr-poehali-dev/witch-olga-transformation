@@ -295,6 +295,107 @@
   text-decoration: line-through;
 }
 
+/* Blood drip animation */
+@keyframes blood-drip {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(120vh);
+    opacity: 0;
+  }
+}
+
+@keyframes blood-drop-fall {
+  0% {
+    transform: translateY(0) scaleY(1);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(18px) scaleY(1.4);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(22px) scaleY(0.3) scaleX(1.8);
+    opacity: 0;
+  }
+}
+
+.blood-drip-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.blood-drip {
+  position: absolute;
+  top: 0;
+  width: 3px;
+  border-radius: 0 0 50% 50%;
+  background: linear-gradient(180deg, #8b0000, #cc0000, #660000);
+  animation: blood-drip linear infinite;
+  opacity: 0;
+}
+
+.blood-drip::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: #cc0000;
+  border-radius: 50% 50% 60% 60%;
+  animation: blood-drop-fall 0.4s ease-in forwards;
+}
+
+/* Blood splatter on background */
+.blood-splatter {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse,
+    rgba(120, 0, 0, 0.18) 0%,
+    transparent 70%
+  );
+  filter: blur(2px);
+}
+
+/* Blood drip under headings */
+.blood-heading {
+  position: relative;
+  display: inline-block;
+}
+
+.blood-heading::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 6px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20'%3E%3Cpath d='M0 0 Q10 0 15 8 Q20 16 25 8 Q30 0 40 0 Q50 0 55 10 Q60 20 65 10 Q70 0 80 0 Q90 0 93 12 Q96 20 100 12 Q104 0 110 0 Q120 0 125 8 Q130 16 135 8 Q140 0 155 0 Q165 0 170 10 Q175 18 180 10 Q185 0 200 0' fill='none' stroke='%238b0000' stroke-width='3'/%3E%3Ccircle cx='15' cy='8' r='3' fill='%23cc0000'/%3E%3Ccircle cx='55' cy='10' r='2.5' fill='%238b0000'/%3E%3Ccircle cx='93' cy='12' r='3.5' fill='%23cc0000'/%3E%3Ccircle cx='170' cy='10' r='2.5' fill='%238b0000'/%3E%3C/svg%3E")
+    no-repeat center;
+  background-size: 100% 100%;
+  opacity: 0.7;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 5px;

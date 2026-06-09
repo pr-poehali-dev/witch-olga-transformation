@@ -367,6 +367,38 @@ export default function Index() {
         )}
       </nav>
 
+      {/* Blood drips */}
+      <div className="blood-drip-container">
+        {[
+          { left: "5%",  width: "2px", height: "180px", delay: "0s",   duration: "8s"  },
+          { left: "12%", width: "3px", height: "220px", delay: "2s",   duration: "11s" },
+          { left: "22%", width: "2px", height: "150px", delay: "5s",   duration: "9s"  },
+          { left: "35%", width: "4px", height: "260px", delay: "1s",   duration: "13s" },
+          { left: "48%", width: "2px", height: "130px", delay: "7s",   duration: "10s" },
+          { left: "58%", width: "3px", height: "200px", delay: "3s",   duration: "12s" },
+          { left: "70%", width: "2px", height: "170px", delay: "6s",   duration: "9s"  },
+          { left: "80%", width: "4px", height: "240px", delay: "0.5s", duration: "14s" },
+          { left: "90%", width: "2px", height: "160px", delay: "4s",   duration: "10s" },
+          { left: "95%", width: "3px", height: "190px", delay: "8s",   duration: "11s" },
+        ].map((d, i) => (
+          <div key={i} className="blood-drip" style={{
+            left: d.left, width: d.width, height: d.height,
+            animationDelay: d.delay, animationDuration: d.duration,
+          }} />
+        ))}
+      </div>
+
+      {/* Blood splatters */}
+      {[
+        { top: "15%", left: "3%",  width: "180px", height: "120px" },
+        { top: "40%", right: "4%", width: "220px", height: "150px" },
+        { top: "70%", left: "6%",  width: "160px", height: "100px" },
+        { top: "25%", right: "8%", width: "200px", height: "130px" },
+        { top: "85%", left: "50%", width: "250px", height: "160px" },
+      ].map((s, i) => (
+        <div key={i} className="blood-splatter" style={{ ...s }} />
+      ))}
+
       {/* Floating buttons */}
       <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
         <a href="tel:+79999825661"
@@ -447,7 +479,7 @@ export default function Index() {
         <div className="max-w-6xl mx-auto">
           <div className={`text-center mb-16 transition-all duration-1000 ${sectionVisible("services") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
             <p className="text-xs tracking-widest uppercase mb-3" style={{ color: "rgba(212,175,55,0.5)", fontFamily: "'Cormorant SC', serif" }}>Что я предлагаю</p>
-            <h2 className="text-4xl md:text-5xl mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "rgba(245,230,200,0.95)" }}>
+            <h2 className="blood-heading text-4xl md:text-5xl mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "rgba(245,230,200,0.95)" }}>
               Магические <span className="gold-text">Услуги</span>
             </h2>
             <div className="section-divider" />
@@ -500,7 +532,7 @@ export default function Index() {
 
             <div className={`transition-all duration-1000 delay-200 ${sectionVisible("about") ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"}`}>
               <p className="text-xs tracking-widest uppercase mb-3" style={{ color: "rgba(212,175,55,0.5)", fontFamily: "'Cormorant SC', serif" }}>Обо мне</p>
-              <h2 className="text-4xl md:text-5xl mb-6" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "rgba(245,230,200,0.95)" }}>
+              <h2 className="blood-heading text-4xl md:text-5xl mb-6" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "rgba(245,230,200,0.95)" }}>
                 Ольга, <span className="gold-text">36 лет</span>
               </h2>
               <div className="space-y-4 leading-relaxed" style={{ color: "rgba(212,175,55,0.55)", fontFamily: "'Cormorant Garamond', serif", fontSize: "1.05rem" }}>
@@ -526,7 +558,7 @@ export default function Index() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <p className="text-xs tracking-widest uppercase mb-3" style={{ color: "rgba(212,175,55,0.5)", fontFamily: "'Cormorant SC', serif" }}>Истории клиентов</p>
-            <h2 className="text-4xl md:text-5xl mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "rgba(245,230,200,0.95)" }}>
+            <h2 className="blood-heading text-4xl md:text-5xl mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "rgba(245,230,200,0.95)" }}>
               <span className="gold-text">Отзывы</span>
             </h2>
             <div className="section-divider" />
@@ -633,7 +665,7 @@ export default function Index() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <p className="text-xs tracking-widest uppercase mb-3" style={{ color: "rgba(212,175,55,0.5)", fontFamily: "'Cormorant SC', serif" }}>Знания и мудрость</p>
-            <h2 className="text-4xl md:text-5xl mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "rgba(245,230,200,0.95)" }}>
+            <h2 className="blood-heading text-4xl md:text-5xl mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "rgba(245,230,200,0.95)" }}>
               <span className="gold-text">Блог</span>
             </h2>
             <div className="section-divider" />
@@ -672,7 +704,7 @@ export default function Index() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <p className="text-xs tracking-widest uppercase mb-3" style={{ color: "rgba(212,175,55,0.5)", fontFamily: "'Cormorant SC', serif" }}>Онлайн-запись</p>
-            <h2 className="text-4xl md:text-5xl mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "rgba(245,230,200,0.95)" }}>
+            <h2 className="blood-heading text-4xl md:text-5xl mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "rgba(245,230,200,0.95)" }}>
               Записаться на <span className="gold-text">Консультацию</span>
             </h2>
             <div className="section-divider mb-4" />
@@ -788,7 +820,7 @@ export default function Index() {
       <section id="contacts" ref={(el) => { sectionRefs.current["contacts"] = el; }} className="py-24 px-6 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-xs tracking-widest uppercase mb-3" style={{ color: "rgba(212,175,55,0.5)", fontFamily: "'Cormorant SC', serif" }}>Связаться</p>
-          <h2 className="text-4xl md:text-5xl mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "rgba(245,230,200,0.95)" }}>
+          <h2 className="blood-heading text-4xl md:text-5xl mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "rgba(245,230,200,0.95)" }}>
             <span className="gold-text">Контакты</span>
           </h2>
           <div className="section-divider mb-12" />
