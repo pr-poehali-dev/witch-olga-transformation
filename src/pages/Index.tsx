@@ -6,14 +6,14 @@ const BOOKING_URL = "https://functions.poehali.dev/67e13010-ffe5-4416-931e-2c598
 const WITCH_PHOTO = "https://cdn.poehali.dev/projects/c72467d9-9466-4aff-a491-93b73966a89b/bucket/67824979-37b3-4bcd-bbd7-d85fa2b2fbf6.jpg";
 
 const SERVICES = [
-  { icon: "✨", title: "Энергетическая чистка", desc: "Результат 100%. Устранение порчи, сглаза, негативных программ. Восстановление вашей природной силы и энергетики.", price: "от 5 000 ₽" },
-  { icon: "🔮", title: "Диагностика судьбы", desc: "Глубокий анализ вашей ситуации через дар ясновидения. Понимание причин и чёткий путь выхода.", price: "от 3 000 ₽" },
-  { icon: "💜", title: "Приворот", desc: "Работаю только с серьёзными, адекватными людьми. Индивидуальный подход к каждой ситуации. Результат обсуждается лично.", price: "индивидуально" },
-  { icon: "🌙", title: "Работа с кармой", desc: "Исцеление кармических долгов и родовых программ. Освобождение от груза прошлых воплощений.", price: "от 10 000 ₽" },
-  { icon: "⭐", title: "Привлечение удачи", desc: "Открытие финансовых потоков, привлечение успеха и процветания. Снятие денежных блоков.", price: "от 6 000 ₽" },
-  { icon: "🕯️", title: "Обряды и ритуалы", desc: "Индивидуальные обряды для защиты, исцеления и достижения целей. Работа с древними практиками.", price: "от 12 000 ₽" },
-  { icon: "⚰️", title: "Кладбищенская чистка", desc: "Там, где другие не могут помочь — помогу я. Снятие кладбищенской порчи, отворот, поворот, глубокая очистка от смерти клиента. Работа с самыми тяжёлыми случаями.", price: "60 000 ₽" },
-  { icon: "🛡️", title: "Создание амулетов", desc: "Мощные защитные амулеты от гибели и тяжёлых ранений. Особенно подходят для военных и людей в зоне опасности. Каждый амулет изготавливается индивидуально с личной привязкой.", price: "от 15 000 ₽" },
+  { icon: "🪄", title: "Энергетическая чистка", desc: "Результат 100%. Устранение порчи, сглаза, негативных программ. Восстановление вашей природной силы и энергетики.", price: "от 5 000 ₽", symbol: "🦅" },
+  { icon: "🔮", title: "Диагностика судьбы", desc: "Глубокий анализ вашей ситуации через дар ясновидения. Понимание причин и чёткий путь выхода.", price: "от 3 000 ₽", symbol: "💀" },
+  { icon: "🖤", title: "Приворот", desc: "Работаю только с серьёзными, адекватными людьми. Индивидуальный подход к каждой ситуации. Результат обсуждается лично.", price: "индивидуально", symbol: "🐦‍⬛" },
+  { icon: "🌑", title: "Работа с кармой", desc: "Исцеление кармических долгов и родовых программ. Освобождение от груза прошлых воплощений.", price: "от 10 000 ₽", symbol: "💀" },
+  { icon: "🩸", title: "Привлечение удачи", desc: "Открытие финансовых потоков, привлечение успеха и процветания. Снятие денежных блоков.", price: "от 6 000 ₽", symbol: "🦅" },
+  { icon: "🕯️", title: "Обряды и ритуалы", desc: "Индивидуальные обряды для защиты, исцеления и достижения целей. Работа с древними практиками.", price: "от 12 000 ₽", symbol: "🐦‍⬛" },
+  { icon: "⚰️", title: "Кладбищенская чистка", desc: "Там, где другие не могут помочь — помогу я. Снятие кладбищенской порчи, отворот, поворот, глубокая очистка от смерти клиента. Работа с самыми тяжёлыми случаями.", price: "60 000 ₽", symbol: "💀" },
+  { icon: "🛡️", title: "Создание амулетов", desc: "Мощные защитные амулеты от гибели и тяжёлых ранений. Особенно подходят для военных и людей в зоне опасности. Каждый амулет изготавливается индивидуально с личной привязкой.", price: "от 15 000 ₽", symbol: "🦅" },
 ];
 
 const REVIEWS = [
@@ -373,16 +373,17 @@ export default function Index() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {SERVICES.map((s, i) => (
               <div key={i}
-                className={`mystic-card rounded-2xl p-6 group hover:border-yellow-400/40 transition-all duration-500 cursor-pointer ${sectionVisible("services") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+                className={`mystic-card rounded-2xl p-6 group hover:border-red-900/60 transition-all duration-500 cursor-pointer relative overflow-hidden ${sectionVisible("services") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
                 style={{ transitionDelay: `${i * 100}ms` }}>
+                <div className="absolute top-3 right-4 text-2xl opacity-20 group-hover:opacity-50 transition-opacity select-none">{s.symbol}</div>
                 <div className="text-3xl mb-4">{s.icon}</div>
-                <h3 className="text-xl mb-3 group-hover:text-yellow-400 transition-colors" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "rgba(245,230,200,0.9)" }}>
+                <h3 className="text-xl mb-3 group-hover:text-red-400 transition-colors" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, color: "rgba(245,220,220,0.9)" }}>
                   {s.title}
                 </h3>
-                <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(212,175,55,0.5)" }}>{s.desc}</p>
+                <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(200,130,130,0.55)" }}>{s.desc}</p>
                 <div className="flex items-center justify-between">
                   <span className="text-sm gold-text" style={{ fontFamily: "'Cormorant SC', serif" }}>{s.price}</span>
-                  <button onClick={() => scrollTo("booking")} className="text-xs tracking-wider opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: "rgba(212,175,55,0.7)", fontFamily: "'Cormorant SC', serif" }}>
+                  <button onClick={() => scrollTo("booking")} className="text-xs tracking-wider opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: "rgba(200,80,80,0.8)", fontFamily: "'Cormorant SC', serif" }}>
                     Записаться →
                   </button>
                 </div>
