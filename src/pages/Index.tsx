@@ -405,6 +405,11 @@ export default function Index() {
               style={{ border: "1px solid rgba(212,175,55,0.3)", color: "rgba(212,175,55,0.8)", fontFamily: "'Cormorant SC', serif" }}>
               <Icon name="Phone" size={16} /> Позвонить
             </a>
+            <a href="https://t.me/+79999825661" target="_blank" rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-sm tracking-widest transition-all hover:bg-white/5"
+              style={{ border: "1px solid rgba(212,175,55,0.3)", color: "rgba(212,175,55,0.8)", fontFamily: "'Cormorant SC', serif" }}>
+              <Icon name="Send" size={16} /> Telegram
+            </a>
           </div>
 
           <div className="mt-16 grid grid-cols-3 gap-8 max-w-sm mx-auto">
