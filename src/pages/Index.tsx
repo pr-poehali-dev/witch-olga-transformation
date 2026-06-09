@@ -340,7 +340,7 @@ export default function Index() {
           </div>
 
           <div className="mt-16 grid grid-cols-3 gap-8 max-w-sm mx-auto">
-            {[["15+", "лет опыта"], ["2 000+", "клиентов"], ["98%", "результат"]].map(([num, label]) => (
+            {[["16+", "лет опыта"], ["1 000+", "клиентов"], ["вся Россия", "география"]].map(([num, label]) => (
               <div key={label} className="text-center">
                 <div className="text-2xl font-light mb-1 gold-text" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{num}</div>
                 <div className="text-xs tracking-wider" style={{ color: "rgba(212,175,55,0.45)", fontFamily: "'Cormorant SC', serif" }}>{label}</div>
