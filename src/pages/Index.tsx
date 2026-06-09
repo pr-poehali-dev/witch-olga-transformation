@@ -400,11 +400,11 @@ export default function Index() {
             <button className="btn-gold px-8 py-4 rounded-xl text-sm tracking-widest animate-pulse-gold" onClick={() => scrollTo("booking")}>
               ✦ Записаться на консультацию
             </button>
-            <button onClick={() => scrollTo("services")}
-              className="px-8 py-4 rounded-xl text-sm tracking-widest transition-all hover:bg-white/5"
+            <a href="tel:+79999825661"
+              className="flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-sm tracking-widest transition-all hover:bg-white/5"
               style={{ border: "1px solid rgba(212,175,55,0.3)", color: "rgba(212,175,55,0.8)", fontFamily: "'Cormorant SC', serif" }}>
-              Узнать об услугах
-            </button>
+              <Icon name="Phone" size={16} /> Позвонить
+            </a>
           </div>
 
           <div className="mt-16 grid grid-cols-3 gap-8 max-w-sm mx-auto">
