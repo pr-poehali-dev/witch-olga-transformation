@@ -6,11 +6,11 @@ const BOOKING_URL = "https://functions.poehali.dev/67e13010-ffe5-4416-931e-2c598
 const WITCH_PHOTO = "https://cdn.poehali.dev/projects/c72467d9-9466-4aff-a491-93b73966a89b/bucket/67824979-37b3-4bcd-bbd7-d85fa2b2fbf6.jpg";
 
 const SERVICES = [
-  { icon: "✨", title: "Энергетическая чистка", desc: "Устранение негативных программ, порчи и сглаза. Восстановление природного энергетического потока.", price: "от 5 000 ₽" },
-  { icon: "🔮", title: "Диагностика судьбы", desc: "Глубокий анализ вашей ситуации через магические практики. Понимание причин и путей выхода.", price: "от 3 000 ₽" },
-  { icon: "💜", title: "Любовная магия", desc: "Возвращение любимого, привлечение партнёра, гармонизация отношений и семейных уз.", price: "от 8 000 ₽" },
+  { icon: "✨", title: "Энергетическая чистка", desc: "Результат 100%. Устранение порчи, сглаза, негативных программ. Восстановление вашей природной силы и энергетики.", price: "от 5 000 ₽" },
+  { icon: "🔮", title: "Диагностика судьбы", desc: "Глубокий анализ вашей ситуации через дар ясновидения. Понимание причин и чёткий путь выхода.", price: "от 3 000 ₽" },
+  { icon: "💜", title: "Приворот", desc: "Работаю только с серьёзными, адекватными людьми. Индивидуальный подход к каждой ситуации. Результат обсуждается лично.", price: "индивидуально" },
   { icon: "🌙", title: "Работа с кармой", desc: "Исцеление кармических долгов и родовых программ. Освобождение от груза прошлых воплощений.", price: "от 10 000 ₽" },
-  { icon: "⭐", title: "Привлечение удачи", desc: "Создание магнита для денег, успеха и процветания. Открытие финансовых потоков.", price: "от 6 000 ₽" },
+  { icon: "⭐", title: "Привлечение удачи", desc: "Открытие финансовых потоков, привлечение успеха и процветания. Снятие денежных блоков.", price: "от 6 000 ₽" },
   { icon: "🕯️", title: "Обряды и ритуалы", desc: "Индивидуальные обряды для защиты, исцеления и достижения целей. Работа с древними практиками.", price: "от 12 000 ₽" },
 ];
 
@@ -323,10 +323,13 @@ export default function Index() {
 
           <div className="section-divider mb-6" />
 
-          <p className="mb-10 leading-relaxed" style={{ color: "rgba(212, 175, 55, 0.6)", fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontSize: "1.2rem" }}>
+          <p className="mb-6 leading-relaxed" style={{ color: "rgba(212, 175, 55, 0.6)", fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontSize: "1.2rem" }}>
             Пространство трансформации и древней мудрости.<br />
             Где рождаются перемены, способные изменить вашу жизнь.
           </p>
+          <div className="mb-8 inline-block px-5 py-2 rounded-full text-xs tracking-wider" style={{ border: "1px solid rgba(212,175,55,0.25)", color: "rgba(212,175,55,0.55)", fontFamily: "'Cormorant SC', serif" }}>
+            ✦ Работаю на принципе энергообмена — бесплатных консультаций нет ✦
+          </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="btn-gold px-8 py-4 rounded-xl text-sm tracking-widest animate-pulse-gold" onClick={() => scrollTo("booking")}>
