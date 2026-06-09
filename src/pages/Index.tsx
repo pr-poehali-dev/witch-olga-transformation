@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import Icon from "@/components/ui/icon";
 
+const BOOKING_URL = "https://functions.poehali.dev/67e13010-ffe5-4416-931e-2c598d37af35";
+
 const WITCH_PHOTO = "https://cdn.poehali.dev/projects/c72467d9-9466-4aff-a491-93b73966a89b/files/93d0f987-7264-432d-8003-994b1b19018f.jpg";
 
 const SERVICES = [
@@ -178,7 +180,10 @@ export default function Index() {
   const [activeSection, setActiveSection] = useState("home");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [bookingDone, setBookingDone] = useState<{ date: string; time: string } | null>(null);
-  const [bookingForm, setBookingForm] = useState({ name: "", phone: "", service: "" });
+  const [bookingForm, setBookingForm] = useState({ name: "", phone: "", service: "", message: "" });
+  const [bookingLoading, setBookingLoading] = useState(false);
+  const [bookingError, setBookingError] = useState("");
+  const [pendingBook, setPendingBook] = useState<{ date: string; time: string } | null>(null);
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set(["home"]));
 
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
@@ -210,7 +215,42 @@ export default function Index() {
   };
 
   const handleBook = (date: string, time: string) => {
-    setBookingDone({ date, time });
+    setPendingBook({ date, time });
+  };
+
+  const handleSubmit = async () => {
+    if (!pendingBook) return;
+    if (!bookingForm.name || !bookingForm.phone) {
+      setBookingError("Пожалуйста, заполните имя и контакт");
+      return;
+    }
+    setBookingLoading(true);
+    setBookingError("");
+    try {
+      const res = await fetch(BOOKING_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: bookingForm.name,
+          phone: bookingForm.phone,
+          service: bookingForm.service,
+          message: bookingForm.message,
+          date: pendingBook.date,
+          time: pendingBook.time,
+        }),
+      });
+      if (res.ok) {
+        setBookingDone(pendingBook);
+        setPendingBook(null);
+        setBookingForm({ name: "", phone: "", service: "", message: "" });
+      } else {
+        setBookingError("Ошибка отправки. Попробуйте ещё раз.");
+      }
+    } catch {
+      setBookingError("Ошибка соединения. Попробуйте ещё раз.");
+    } finally {
+      setBookingLoading(false);
+    }
   };
 
   const sectionVisible = (id: string) => visibleSections.has(id);
@@ -542,15 +582,37 @@ export default function Index() {
                     <textarea
                       rows={3}
                       placeholder="Опишите, с чем хотите обратиться..."
+                      value={bookingForm.message}
+                      onChange={(e) => setBookingForm({ ...bookingForm, message: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all resize-none"
                       style={{ background: "rgba(40,20,60,0.5)", border: "1px solid rgba(212,175,55,0.2)", color: "rgba(245,230,200,0.8)", fontFamily: "'Golos Text', sans-serif" }}
                     />
                   </div>
                 </div>
 
-                <p className="text-xs" style={{ color: "rgba(212,175,55,0.3)" }}>
-                  * Выберите дату и время в календаре слева, затем нажмите кнопку записи
-                </p>
+                {pendingBook && (
+                  <div className="px-4 py-3 rounded-xl text-sm" style={{ background: "rgba(212,175,55,0.08)", border: "1px solid rgba(212,175,55,0.25)", color: "rgba(212,175,55,0.8)" }}>
+                    📅 Выбрано: <strong>{pendingBook.date}</strong> в <strong>{pendingBook.time}</strong>
+                  </div>
+                )}
+
+                {bookingError && (
+                  <p className="text-sm" style={{ color: "#ff6b6b" }}>{bookingError}</p>
+                )}
+
+                <button
+                  className="btn-gold w-full py-3 rounded-xl text-sm font-medium tracking-widest disabled:opacity-50"
+                  onClick={handleSubmit}
+                  disabled={bookingLoading || !pendingBook}
+                >
+                  {bookingLoading ? "Отправляем..." : "✦ Отправить заявку ✦"}
+                </button>
+
+                {!pendingBook && (
+                  <p className="text-xs text-center" style={{ color: "rgba(212,175,55,0.3)" }}>
+                    * Сначала выберите дату и время в календаре слева
+                  </p>
+                )}
               </div>
             </div>
           )}
