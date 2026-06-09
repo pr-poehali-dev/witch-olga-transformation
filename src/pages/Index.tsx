@@ -3,7 +3,7 @@ import Icon from "@/components/ui/icon";
 
 const BOOKING_URL = "https://functions.poehali.dev/67e13010-ffe5-4416-931e-2c598d37af35";
 
-const WITCH_PHOTO = "https://cdn.poehali.dev/projects/c72467d9-9466-4aff-a491-93b73966a89b/files/93d0f987-7264-432d-8003-994b1b19018f.jpg";
+const WITCH_PHOTO = "https://cdn.poehali.dev/projects/c72467d9-9466-4aff-a491-93b73966a89b/bucket/67824979-37b3-4bcd-bbd7-d85fa2b2fbf6.jpg";
 
 const SERVICES = [
   { icon: "✨", title: "Энергетическая чистка", desc: "Устранение негативных программ, порчи и сглаза. Восстановление природного энергетического потока.", price: "от 5 000 ₽" },
