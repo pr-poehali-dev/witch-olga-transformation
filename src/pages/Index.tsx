@@ -4,6 +4,7 @@ import Icon from "@/components/ui/icon";
 const BOOKING_URL = "https://functions.poehali.dev/67e13010-ffe5-4416-931e-2c598d37af35";
 
 const WITCH_PHOTO = "https://cdn.poehali.dev/projects/c72467d9-9466-4aff-a491-93b73966a89b/bucket/67824979-37b3-4bcd-bbd7-d85fa2b2fbf6.jpg";
+const WITCH_ART = "https://cdn.poehali.dev/projects/c72467d9-9466-4aff-a491-93b73966a89b/files/3f21f2fe-70b5-4edb-ae4f-cec7eeaf20cc.jpg";
 
 const SERVICES = [
   { icon: "🪄", title: "Энергетическая чистка", desc: "Результат 100%. Устранение порчи, сглаза, негативных программ. Восстановление вашей природной силы и энергетики.", price: "от 5 000 ₽", symbol: "🦅" },
@@ -398,12 +399,20 @@ export default function Index() {
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className={`relative transition-all duration-1000 ${sectionVisible("about") ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}>
-              <div className="relative rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(212,175,55,0.2)" }}>
-                <img src={WITCH_PHOTO} alt="Ведьма Ольга" className="w-full h-96 object-cover" style={{ filter: "brightness(0.85) saturate(0.9)" }} />
-                <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, transparent 50%, rgba(10,5,20,0.8) 100%)" }} />
+              <div className="grid grid-cols-2 gap-3">
+                <div className="relative rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(140,0,0,0.3)" }}>
+                  <img src={WITCH_PHOTO} alt="Ведьма Ольга" className="w-full h-72 object-cover" style={{ filter: "brightness(0.85) saturate(0.8)" }} />
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, transparent 50%, rgba(10,0,0,0.8) 100%)" }} />
+                  <div className="absolute bottom-2 left-3 text-xs tracking-widest" style={{ color: "rgba(200,80,80,0.8)", fontFamily: "'Cormorant SC', serif" }}>Ольга</div>
+                </div>
+                <div className="relative rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(140,0,0,0.3)" }}>
+                  <img src={WITCH_ART} alt="Тёмная ведьма" className="w-full h-72 object-cover" style={{ filter: "brightness(0.9) saturate(0.85)" }} />
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, transparent 50%, rgba(10,0,0,0.8) 100%)" }} />
+                  <div className="absolute bottom-2 left-3 text-xs tracking-widest" style={{ color: "rgba(200,80,80,0.8)", fontFamily: "'Cormorant SC', serif" }}>Сила</div>
+                </div>
               </div>
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full flex items-center justify-center text-3xl animate-float mystic-card" style={{ border: "1px solid rgba(212,175,55,0.3)" }}>
-                🔮
+              <div className="absolute -bottom-4 -right-4 w-20 h-20 rounded-full flex items-center justify-center text-2xl animate-float mystic-card" style={{ border: "1px solid rgba(140,0,0,0.4)" }}>
+                🐦‍⬛
               </div>
             </div>
 
