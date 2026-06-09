@@ -515,7 +515,7 @@ export default function Index() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[...REVIEWS, ...dbReviews].map((r, i) => (
               <div key={i}
-                className={`mystic-card rounded-2xl p-6 transition-all duration-700 ${sectionVisible("reviews") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+                className="mystic-card rounded-2xl p-6 transition-all duration-700 opacity-100 translate-y-0"
                 style={{ transitionDelay: `${i * 120}ms` }}>
                 <div className="flex mb-3">
                   {Array.from({ length: r.stars }).map((_, j) => (
