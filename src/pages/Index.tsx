@@ -3,7 +3,7 @@ import Icon from "@/components/ui/icon";
 
 const BOOKING_URL = "https://functions.poehali.dev/67e13010-ffe5-4416-931e-2c598d37af35";
 
-const WITCH_PHOTO = "https://cdn.poehali.dev/projects/c72467d9-9466-4aff-a491-93b73966a89b/bucket/67824979-37b3-4bcd-bbd7-d85fa2b2fbf6.jpg";
+const WITCH_PHOTO = "https://cdn.poehali.dev/projects/c72467d9-9466-4aff-a491-93b73966a89b/bucket/139a21c9-645a-4ec5-b44e-ee752826075a.jpg";
 const WITCH_ART = "https://cdn.poehali.dev/projects/c72467d9-9466-4aff-a491-93b73966a89b/files/3f21f2fe-70b5-4edb-ae4f-cec7eeaf20cc.jpg";
 
 const SERVICES = [
