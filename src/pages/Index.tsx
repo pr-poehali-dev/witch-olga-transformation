@@ -650,7 +650,7 @@ export default function Index() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {[
-              { icon: "Phone", label: "Телефон", value: "+7 (999) 982-56-61", href: "tel:+79999825661" },
+              { icon: "Phone", label: "Телефон", value: "+7 (925) 188-53-63", href: "tel:+79251885363" },
               { icon: "MessageCircle", label: "Telegram / WhatsApp", value: "+7 (925) 188-53-63", href: "https://t.me/+79251885363" },
               { icon: "Mail", label: "Email", value: "Olgazajceva332@gmail.com", href: "mailto:Olgazajceva332@gmail.com" },
             ].map(({ icon, label, value, href }) => (
