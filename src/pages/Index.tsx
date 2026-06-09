@@ -330,8 +330,8 @@ export default function Index() {
             Пространство трансформации и древней мудрости.<br />
             Где рождаются перемены, способные изменить вашу жизнь.
           </p>
-          <div className="mb-8 inline-block px-5 py-2 rounded-full text-xs tracking-wider" style={{ border: "1px solid rgba(212,175,55,0.25)", color: "rgba(212,175,55,0.55)", fontFamily: "'Cormorant SC', serif" }}>
-            ✦ Работаю на принципе энергообмена — бесплатных консультаций нет ✦
+          <div className="mb-8 inline-block px-5 py-2 rounded-xl text-sm" style={{ border: "1px solid rgba(212,175,55,0.25)", color: "rgba(212,175,55,0.6)", fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", maxWidth: "600px" }}>
+            ✦ Настоящая ведьма знает цену своей работе. Бесплатно — платит бес. Я работаю только за достойную оплату ✦
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
