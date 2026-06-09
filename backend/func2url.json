@@ -1,3 +1,5 @@
 {
+  "approve-review": "https://functions.poehali.dev/5d715769-456a-46e3-ac53-6522470898af",
+  "submit-review": "https://functions.poehali.dev/7113bb85-d90b-4e50-ae42-9b81a9b10594",
   "booking": "https://functions.poehali.dev/67e13010-ffe5-4416-931e-2c598d37af35"
 }

@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import Icon from "@/components/ui/icon";
 
 const BOOKING_URL = "https://functions.poehali.dev/67e13010-ffe5-4416-931e-2c598d37af35";
+const SUBMIT_REVIEW_URL = "https://functions.poehali.dev/7113bb85-d90b-4e50-ae42-9b81a9b10594";
+const GET_REVIEWS_URL = "https://functions.poehali.dev/5d715769-456a-46e3-ac53-6522470898af";
 
 const WITCH_PHOTO = "https://cdn.poehali.dev/projects/c72467d9-9466-4aff-a491-93b73966a89b/bucket/37befd69-2629-4d37-be60-c8c5ec83f0da.jpg";
 const WITCH_ART = "https://cdn.poehali.dev/projects/c72467d9-9466-4aff-a491-93b73966a89b/bucket/a186639e-0821-4e08-84cd-32b41e089aac.jpg";
@@ -210,7 +212,46 @@ export default function Index() {
   const [pendingBook, setPendingBook] = useState<{ date: string; time: string } | null>(null);
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set(["home"]));
 
+  const [dbReviews, setDbReviews] = useState<{ id: number; name: string; text: string; stars: number }[]>([]);
+  const [reviewForm, setReviewForm] = useState({ name: "", text: "", stars: 5 });
+  const [reviewLoading, setReviewLoading] = useState(false);
+  const [reviewSent, setReviewSent] = useState(false);
+  const [reviewError, setReviewError] = useState("");
+
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
+
+  useEffect(() => {
+    fetch(GET_REVIEWS_URL)
+      .then((r) => r.json())
+      .then((data) => setDbReviews(data.reviews || []))
+      .catch(() => {});
+  }, []);
+
+  const handleReviewSubmit = async () => {
+    if (!reviewForm.text.trim()) {
+      setReviewError("Напишите текст отзыва");
+      return;
+    }
+    setReviewLoading(true);
+    setReviewError("");
+    try {
+      const res = await fetch(SUBMIT_REVIEW_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(reviewForm),
+      });
+      if (res.ok) {
+        setReviewSent(true);
+        setReviewForm({ name: "", text: "", stars: 5 });
+      } else {
+        setReviewError("Ошибка отправки. Попробуйте ещё раз.");
+      }
+    } catch {
+      setReviewError("Ошибка соединения. Попробуйте ещё раз.");
+    } finally {
+      setReviewLoading(false);
+    }
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -472,7 +513,7 @@ export default function Index() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {REVIEWS.map((r, i) => (
+            {[...REVIEWS, ...dbReviews].map((r, i) => (
               <div key={i}
                 className={`mystic-card rounded-2xl p-6 transition-all duration-700 ${sectionVisible("reviews") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
                 style={{ transitionDelay: `${i * 120}ms` }}>
@@ -490,11 +531,79 @@ export default function Index() {
                   </div>
                   <div>
                     <div className="text-sm" style={{ color: "rgba(245,230,200,0.8)", fontFamily: "'Cormorant SC', serif" }}>{r.name}</div>
-                    <div className="text-xs" style={{ color: "rgba(212,175,55,0.35)" }}>{r.city}</div>
+                    {"city" in r && <div className="text-xs" style={{ color: "rgba(212,175,55,0.35)" }}>{r.city}</div>}
                   </div>
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* ФОРМА ОТЗЫВА */}
+          <div className="mt-16 max-w-2xl mx-auto">
+            <div className="text-center mb-8">
+              <p className="text-xs tracking-widest uppercase mb-2" style={{ color: "rgba(212,175,55,0.5)", fontFamily: "'Cormorant SC', serif" }}>Поделитесь опытом</p>
+              <h3 className="text-2xl" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "rgba(245,230,200,0.9)" }}>
+                Оставить <span className="gold-text">отзыв</span>
+              </h3>
+            </div>
+
+            {reviewSent ? (
+              <div className="mystic-card rounded-2xl p-8 text-center">
+                <div className="text-3xl mb-4">🙏</div>
+                <p className="text-lg mb-2" style={{ fontFamily: "'Cormorant Garamond', serif", color: "rgba(245,230,200,0.9)" }}>Спасибо за ваш отзыв!</p>
+                <p className="text-sm" style={{ color: "rgba(212,175,55,0.5)" }}>Он появится на сайте после проверки</p>
+              </div>
+            ) : (
+              <div className="mystic-card rounded-2xl p-8 space-y-5">
+                <div>
+                  <label className="text-xs tracking-widest uppercase block mb-2" style={{ color: "rgba(212,175,55,0.45)", fontFamily: "'Cormorant SC', serif" }}>Ваше имя (необязательно)</label>
+                  <input
+                    type="text"
+                    placeholder="Клиентка"
+                    value={reviewForm.name}
+                    onChange={(e) => setReviewForm({ ...reviewForm, name: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all"
+                    style={{ background: "rgba(40,20,60,0.5)", border: "1px solid rgba(212,175,55,0.2)", color: "rgba(245,230,200,0.8)", fontFamily: "'Golos Text', sans-serif" }}
+                  />
+                </div>
+
+                <div>
+                  <label className="text-xs tracking-widest uppercase block mb-2" style={{ color: "rgba(212,175,55,0.45)", fontFamily: "'Cormorant SC', serif" }}>Оценка</label>
+                  <div className="flex gap-2">
+                    {[1, 2, 3, 4, 5].map((s) => (
+                      <button
+                        key={s}
+                        onClick={() => setReviewForm({ ...reviewForm, stars: s })}
+                        className="text-2xl transition-transform hover:scale-110"
+                        style={{ color: s <= reviewForm.stars ? "#facc15" : "rgba(212,175,55,0.2)" }}
+                      >★</button>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <label className="text-xs tracking-widest uppercase block mb-2" style={{ color: "rgba(212,175,55,0.45)", fontFamily: "'Cormorant SC', serif" }}>Ваш отзыв *</label>
+                  <textarea
+                    rows={4}
+                    placeholder="Расскажите о своём опыте..."
+                    value={reviewForm.text}
+                    onChange={(e) => setReviewForm({ ...reviewForm, text: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all resize-none"
+                    style={{ background: "rgba(40,20,60,0.5)", border: "1px solid rgba(212,175,55,0.2)", color: "rgba(245,230,200,0.8)", fontFamily: "'Golos Text', sans-serif" }}
+                  />
+                </div>
+
+                {reviewError && <p className="text-sm" style={{ color: "#ff6b6b" }}>{reviewError}</p>}
+
+                <button
+                  className="btn-gold w-full py-3 rounded-xl text-sm font-medium tracking-widest disabled:opacity-50"
+                  onClick={handleReviewSubmit}
+                  disabled={reviewLoading}
+                >
+                  {reviewLoading ? "Отправляем..." : "✦ Отправить отзыв ✦"}
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </section>
