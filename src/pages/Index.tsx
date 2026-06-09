@@ -630,9 +630,8 @@ export default function Index() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {[
-              { icon: "Phone", label: "Телефон", value: "+7 (900) 000-00-00" },
-              { icon: "MessageCircle", label: "Telegram", value: "@vedma_olga" },
-              { icon: "Mail", label: "Email", value: "olga@magic.ru" },
+              { icon: "Phone", label: "Телефон", value: "+7 (999) 982-56-61" },
+              { icon: "Mail", label: "Email", value: "Olgazajceva332@gmail.com" },
             ].map(({ icon, label, value }) => (
               <div key={label} className="mystic-card rounded-2xl p-6 flex flex-col items-center gap-3">
                 <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: "rgba(212,175,55,0.1)", border: "1px solid rgba(212,175,55,0.2)" }}>
