@@ -401,7 +401,7 @@ export default function Index() {
             <div className={`relative transition-all duration-1000 ${sectionVisible("about") ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}>
               <div className="grid grid-cols-2 gap-3">
                 <div className="relative rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(140,0,0,0.3)" }}>
-                  <img src={WITCH_PHOTO} alt="Ведьма Ольга" className="w-full h-72 object-cover" style={{ filter: "brightness(0.85) saturate(0.8)" }} />
+                  <img src={WITCH_PHOTO} alt="Ведьма Ольга" className="w-full h-72 object-cover" style={{ filter: "brightness(0.85) saturate(0.8)", objectPosition: "top" }} />
                   <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, transparent 50%, rgba(10,0,0,0.8) 100%)" }} />
                   <div className="absolute bottom-2 left-3 text-xs tracking-widest" style={{ color: "rgba(200,80,80,0.8)", fontFamily: "'Cormorant SC', serif" }}>Ольга</div>
                 </div>
