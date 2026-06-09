@@ -38,32 +38,37 @@ const BUSY_SLOTS: Record<string, string[]> = {
   "2026-06-18": ["10:00", "11:30", "13:00", "15:00"],
 };
 
-function StarField() {
-  const stars = Array.from({ length: 80 }, (_, i) => ({
+function Ravens() {
+  const ravens = Array.from({ length: 12 }, (_, i) => ({
     id: i,
     x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 2 + 0.5,
-    delay: Math.random() * 4,
-    duration: 2 + Math.random() * 3,
+    y: Math.random() * 80,
+    size: 28 + Math.random() * 40,
+    delay: Math.random() * 8,
+    duration: 10 + Math.random() * 8,
+    opacity: 0.08 + Math.random() * 0.14,
   }));
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-      {stars.map((star) => (
+      {/* Кровавые пятна */}
+      <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 20% 30%, rgba(120,0,0,0.18) 0%, transparent 50%), radial-gradient(ellipse at 80% 70%, rgba(90,0,0,0.15) 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(60,0,0,0.12) 0%, transparent 70%)" }} />
+      {ravens.map((r) => (
         <div
-          key={star.id}
-          className="star animate-twinkle"
+          key={r.id}
+          className="absolute animate-raven"
           style={{
-            left: `${star.x}%`,
-            top: `${star.y}%`,
-            width: `${star.size}px`,
-            height: `${star.size}px`,
-            animationDelay: `${star.delay}s`,
-            animationDuration: `${star.duration}s`,
-            opacity: 0.3,
+            left: `${r.x}%`,
+            top: `${r.y}%`,
+            fontSize: `${r.size}px`,
+            animationDelay: `${r.delay}s`,
+            animationDuration: `${r.duration}s`,
+            opacity: r.opacity,
+            filter: "drop-shadow(0 0 8px rgba(180,0,0,0.3))",
           }}
-        />
+        >
+          🐦‍⬛
+        </div>
       ))}
     </div>
   );
@@ -269,8 +274,8 @@ export default function Index() {
   ];
 
   return (
-    <div className="min-h-screen relative" style={{ background: "linear-gradient(180deg, #0d0618 0%, #120820 30%, #0a0515 60%, #0d0618 100%)" }}>
-      <StarField />
+    <div className="min-h-screen relative" style={{ background: "linear-gradient(180deg, #0a0000 0%, #150000 20%, #0d0000 50%, #100000 80%, #080000 100%)" }}>
+      <Ravens />
 
       {/* NAV */}
       <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4" style={{ background: "linear-gradient(180deg, rgba(10,5,20,0.95) 0%, transparent 100%)", backdropFilter: "blur(10px)" }}>
