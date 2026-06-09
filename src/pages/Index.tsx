@@ -367,12 +367,19 @@ export default function Index() {
         )}
       </nav>
 
-      {/* Floating Telegram button */}
-      <a href="https://t.me/+79999825661" target="_blank" rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full shadow-lg transition-transform hover:scale-110"
-        style={{ background: "linear-gradient(135deg, #d4af37, #a07820)", boxShadow: "0 0 20px rgba(212,175,55,0.4)" }}>
-        <Icon name="Send" size={22} color="#0a0a0f" />
-      </a>
+      {/* Floating buttons */}
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+        <a href="tel:+79999825661"
+          className="flex items-center justify-center w-14 h-14 rounded-full shadow-lg transition-transform hover:scale-110"
+          style={{ background: "linear-gradient(135deg, #d4af37, #a07820)", boxShadow: "0 0 20px rgba(212,175,55,0.4)" }}>
+          <Icon name="Phone" size={22} color="#0a0a0f" />
+        </a>
+        <a href="https://t.me/+79999825661" target="_blank" rel="noopener noreferrer"
+          className="flex items-center justify-center w-14 h-14 rounded-full shadow-lg transition-transform hover:scale-110"
+          style={{ background: "linear-gradient(135deg, #d4af37, #a07820)", boxShadow: "0 0 20px rgba(212,175,55,0.4)" }}>
+          <Icon name="Send" size={22} color="#0a0a0f" />
+        </a>
+      </div>
 
 
       {/* HERO */}
