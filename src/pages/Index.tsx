@@ -4,7 +4,7 @@ import Icon from "@/components/ui/icon";
 const BOOKING_URL = "https://functions.poehali.dev/67e13010-ffe5-4416-931e-2c598d37af35";
 
 const WITCH_PHOTO = "https://cdn.poehali.dev/projects/c72467d9-9466-4aff-a491-93b73966a89b/bucket/139a21c9-645a-4ec5-b44e-ee752826075a.jpg";
-const WITCH_ART = "https://cdn.poehali.dev/projects/c72467d9-9466-4aff-a491-93b73966a89b/files/3f21f2fe-70b5-4edb-ae4f-cec7eeaf20cc.jpg";
+const WITCH_ART = "https://cdn.poehali.dev/projects/c72467d9-9466-4aff-a491-93b73966a89b/bucket/a186639e-0821-4e08-84cd-32b41e089aac.jpg";
 
 const SERVICES = [
   { icon: "🪄", title: "Энергетическая чистка", desc: "Результат 100%. Устранение порчи, сглаза, негативных программ. Восстановление вашей природной силы и энергетики.", price: "от 5 000 ₽", symbol: "🦅" },
