@@ -633,16 +633,17 @@ export default function Index() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {[
-              { icon: "Phone", label: "Телефон", value: "+7 (999) 982-56-61" },
-              { icon: "Mail", label: "Email", value: "Olgazajceva332@gmail.com" },
-            ].map(({ icon, label, value }) => (
-              <div key={label} className="mystic-card rounded-2xl p-6 flex flex-col items-center gap-3">
+              { icon: "Phone", label: "Телефон", value: "+7 (999) 982-56-61", href: "tel:+79999825661" },
+              { icon: "MessageCircle", label: "Telegram / WhatsApp", value: "+7 (925) 188-53-63", href: "https://t.me/+79251885363" },
+              { icon: "Mail", label: "Email", value: "Olgazajceva332@gmail.com", href: "mailto:Olgazajceva332@gmail.com" },
+            ].map(({ icon, label, value, href }) => (
+              <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="mystic-card rounded-2xl p-6 flex flex-col items-center gap-3 hover:border-yellow-400/40 transition-all duration-300" style={{ textDecoration: "none" }}>
                 <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: "rgba(212,175,55,0.1)", border: "1px solid rgba(212,175,55,0.2)" }}>
                   <Icon name={icon} size={18} className="text-yellow-400" />
                 </div>
                 <div className="text-xs tracking-widest uppercase" style={{ color: "rgba(212,175,55,0.4)", fontFamily: "'Cormorant SC', serif" }}>{label}</div>
                 <div className="text-sm" style={{ color: "rgba(245,230,200,0.8)" }}>{value}</div>
-              </div>
+              </a>
             ))}
           </div>
 
