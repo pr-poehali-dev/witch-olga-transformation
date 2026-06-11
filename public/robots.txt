@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://olgasatana.online/sitemap.xml
+Sitemap: https://vedma-olga.ru/sitemap.xml
