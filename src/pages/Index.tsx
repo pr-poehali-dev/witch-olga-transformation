@@ -562,7 +562,13 @@ export default function Index() {
             <h2 className="blood-heading text-4xl md:text-5xl mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "rgba(245,230,200,0.95)" }}>
               <span className="gold-text">Отзывы</span>
             </h2>
-            <div className="section-divider" />
+            <div className="section-divider mb-8" />
+            <button
+              onClick={() => document.getElementById("review-form")?.scrollIntoView({ behavior: "smooth" })}
+              className="btn-gold px-8 py-3 rounded-xl text-sm font-medium tracking-widest"
+            >
+              ✦ Оставить отзыв ✦
+            </button>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -592,7 +598,7 @@ export default function Index() {
           </div>
 
           {/* ФОРМА ОТЗЫВА */}
-          <div className="mt-16 max-w-2xl mx-auto">
+          <div id="review-form" className="mt-16 max-w-2xl mx-auto">
             <div className="text-center mb-8">
               <p className="text-xs tracking-widest uppercase mb-2" style={{ color: "rgba(212,175,55,0.5)", fontFamily: "'Cormorant SC', serif" }}>Поделитесь опытом</p>
               <h3 className="text-2xl" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, color: "rgba(245,230,200,0.9)" }}>
