@@ -51,15 +51,19 @@ def handler(event: dict, context) -> dict:
         f"✍️ Новый отзыв на модерацию!\n\n"
         f"👤 Имя: {name}\n"
         f"{stars_str}\n\n"
-        f"💬 {text}\n\n"
-        f"ID отзыва: {review_id}\n"
-        f"Для одобрения отправь команду: /approve_{review_id}"
+        f"💬 {text}"
     )
 
     tg_url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
     tg_payload = json.dumps({
         "chat_id": chat_id,
         "text": approve_text,
+        "reply_markup": {
+            "inline_keyboard": [[
+                {"text": "✅ Опубликовать", "callback_data": f"approve_{review_id}"},
+                {"text": "❌ Удалить", "callback_data": f"reject_{review_id}"},
+            ]]
+        }
     }).encode()
 
     req = urllib.request.Request(tg_url, data=tg_payload, method="POST", headers={"Content-Type": "application/json"})
