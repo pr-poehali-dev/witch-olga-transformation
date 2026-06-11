@@ -48,22 +48,21 @@ def handler(event: dict, context) -> dict:
 
     stars_str = "⭐" * stars
     approve_text = (
-        f"✍️ *Новый отзыв на модерацию!*\n\n"
-        f"👤 *Имя:* {name}\n"
+        f"✍️ Новый отзыв на модерацию!\n\n"
+        f"👤 Имя: {name}\n"
         f"{stars_str}\n\n"
         f"💬 {text}\n\n"
-        f"ID отзыва: `{review_id}`\n"
+        f"ID отзыва: {review_id}\n"
         f"Для одобрения отправь команду: /approve_{review_id}"
     )
 
     tg_url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
-    tg_data = urllib.parse.urlencode({
+    tg_payload = json.dumps({
         "chat_id": chat_id,
         "text": approve_text,
-        "parse_mode": "Markdown",
     }).encode()
 
-    req = urllib.request.Request(tg_url, data=tg_data, method="POST")
+    req = urllib.request.Request(tg_url, data=tg_payload, method="POST", headers={"Content-Type": "application/json"})
     urllib.request.urlopen(req)
 
     return {
